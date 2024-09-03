@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from "react";
 
-const EditTodoForm = ({task, editTodo}) => {
+const EditTodoForm = ({ task, editTodo }) => {
   const [value, setValue] = useState(task.task);
 
   const handleSubmit = (e) => {
@@ -21,7 +21,7 @@ const EditTodoForm = ({task, editTodo}) => {
         Update Task
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default EditTodoForm
+export default EditTodoForm;
