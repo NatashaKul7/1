@@ -10,7 +10,6 @@ const EditTodoForm = ({ editTask, task, onClose }) => {
       editTask(value, task.id);
     }
     onClose();
-    // setValue("");
   };
 
   return (

@@ -14,7 +14,6 @@ const Todo = ({ task, toggleComplete, deleteTodo, openEditModal }) => {
       <div>
         <FontAwesomeIcon
           icon={faPenToSquare}
-          // onClick={() => editTodo(task.id)}
           onClick={() => openEditModal(task)}
         />
 

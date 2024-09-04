@@ -16,10 +16,6 @@ const TodoWrapper = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentTodo, setCurrentTodo] = useState(null);
 
-  // const onClose = () => {
-  //   setIsModalOpen(false);
-  // };
-
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(todos));
   }, [todos]);
@@ -43,13 +39,6 @@ const TodoWrapper = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  // const editTodo = (id) => {
-  //   setTodos(
-  //     todos.map((todo) =>
-  //       todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
-  //     )
-  //   );
-  // };
 
   const openEditModal = (todo) => {
     setCurrentTodo(todo);
@@ -59,10 +48,9 @@ const TodoWrapper = () => {
   const editTask = (task, id) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo
+        todo.id === id ? { ...todo, task} : todo
       )
     );
-    setIsModalOpen(false);
   };
 
   return (
@@ -71,15 +59,12 @@ const TodoWrapper = () => {
       <TodoForm addTodo={addTodo} />
       {todos.map(
         (todo, index) => (
-          // todo.isEditing ? (
-          //   <EditTodoForm editTodo={editTask} task={todo} />
-          // ) : (
           <Todo
             task={todo}
             key={index}
             toggleComplete={toggleComplete}
             deleteTodo={deleteTodo}
-            // editTodo={editTodo}
+ 
             openEditModal={() => openEditModal(todo)}
           />
         )
