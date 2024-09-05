@@ -107,10 +107,27 @@ h1 {
 }
 
 .modal-content {
+  position: relative;
   background: white;
   padding: 20px;
   border-radius: 5px;
   width: 400px;
   max-width: 90%;
   color: #1A1A40;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;      
+  justify-content: center; 
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: #8758ff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }

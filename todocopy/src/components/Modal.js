@@ -10,7 +10,7 @@ const Modal = ({ onClose, currentTodo, editTask }) => {
           onClose={onClose}
           editTask={editTask}
         />
-        <button onClick={() => onClose()}>Close</button>
+        <button onClick={() => onClose()} className="delete-btn ">&times;</button>
       </div>
     </div>
   );
