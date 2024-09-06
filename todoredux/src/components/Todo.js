@@ -3,7 +3,7 @@ import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { deleteTodo, toggleCompleted, toggleEditing } from "../store/todoSlice";
 
-const Todo = ({ task, editTodo }) => {
+const Todo = ({ task }) => {
   const dispatch = useDispatch();
 
   return (
