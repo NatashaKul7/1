@@ -90,3 +90,24 @@ h1 {
   cursor: pointer;
 }
  
+
+.ContactBox {
+  display: flex;
+  text-align: start;
+  /* justify-content: center; */
+  /* align-items: center; */
+  color: #fff;
+  background: #1A1A40;
+  margin-top: 5rem;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.ContactForm {
+
+}
+
+.input-box {
+  margin-top: 20px;
+}
+
