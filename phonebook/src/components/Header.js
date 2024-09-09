@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const Header = () => {
   return (
-    <div>Header</div>
-  )
-}
 
-export default Header
+      <div className="ui container center">
+        <h2>Contact Manager</h2>
+      </div>
+
+  );
+};
+
+export default Header;
