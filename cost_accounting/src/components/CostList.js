@@ -1,9 +1,10 @@
+import Card from "./Card";
 import CostItem from "./CostItem";
 import "./CostsList.css";
 
 function CostList({ costs }) {
   return (
-    <div className="costs">
+    <Card className="costs">
       <CostItem
         date={costs[0].date}
         description={costs[0].description}
@@ -19,7 +20,7 @@ function CostList({ costs }) {
         description={costs[2].description}
         amount={costs[2].amount}
       />
-    </div>
+    </Card>
   );
 }
 
