@@ -1,4 +1,5 @@
-import CostList from "./components/CostList";
+import CostList from "./components/Costs/CostList";
+import NewCost from "./components/NewCost/NewCost";
 
 function App() {
   const costs = [
@@ -21,8 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello</h1>
-      <CostList costs={costs}/>
+      <NewCost />
+      <CostList costs={costs} />
     </div>
   );
 }
