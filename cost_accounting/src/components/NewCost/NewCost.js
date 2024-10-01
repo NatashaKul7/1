@@ -1,14 +1,21 @@
-import CostForm from "./CostForm"
-import "./NewCost.css"
+import CostForm from "./CostForm";
+import "./NewCost.css";
 
+const NewCost = (props) => {
+  const saveCostDataHandler = (inputCostData) => {
+    const costData = {
+      ...inputCostData,
+      id: Math.random().toString(),
+    };
 
-const NewCost = () => {
+    props.onAddCost(costData);
+  };
+
   return (
     <div className="new-cost">
-        <CostForm/>
+      <CostForm onSaveCostData={saveCostDataHandler} />
     </div>
-  )
-}
+  );
+};
 
-export default NewCost
-
+export default NewCost;
