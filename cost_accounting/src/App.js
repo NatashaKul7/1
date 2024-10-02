@@ -34,6 +34,7 @@ function App() {
 
   return (
     <div className="App">
+      
       <NewCost onAddCost={addCostHandler} />
       <Costs costs={costs} />
     </div>

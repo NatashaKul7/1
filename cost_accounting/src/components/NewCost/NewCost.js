@@ -1,7 +1,10 @@
+import { useState } from "react";
 import CostForm from "./CostForm";
 import "./NewCost.css";
 
 const NewCost = (props) => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   const saveCostDataHandler = (inputCostData) => {
     const costData = {
       ...inputCostData,
@@ -9,11 +12,24 @@ const NewCost = (props) => {
     };
 
     props.onAddCost(costData);
+    setIsFormOpen(false);
+
+  };
+
+  const cancelCostHandler = () => {
+    setIsFormOpen(false);
   };
 
   return (
     <div className="new-cost">
-      <CostForm onSaveCostData={saveCostDataHandler} />
+      {isFormOpen ? (
+        <CostForm
+          onFormClose={cancelCostHandler}
+          onSaveCostData={saveCostDataHandler}
+        />
+      ) : (
+        <button onClick={() => setIsFormOpen(true)}>Add new cost</button>
+      )}
     </div>
   );
 };

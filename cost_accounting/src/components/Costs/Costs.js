@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import CostFilter from "./CostFilter";
 import "./Costs.css";
 import CostList from "./CostList";
+import CostsDiagram from "./CostsDiagram";
 
 function Costs({ costs }) {
   const [selectedYear, setSelectedYear] = useState("2024");
@@ -22,7 +23,7 @@ function Costs({ costs }) {
           onChangeYear={yearChangeHandler}
           selectedYear={selectedYear}
         />
-
+        <CostsDiagram costs={filteredCosts} />
         <CostList costs={filteredCosts} />
       </Card>
     </div>
