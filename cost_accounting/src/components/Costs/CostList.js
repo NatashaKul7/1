@@ -1,42 +1,27 @@
-import { useState } from "react";
-import Card from "../UI/Card";
-import CostFilter from "./CostFilter";
 import CostItem from "./CostItem";
-import "./CostsList.css";
+import "./CostList.css"
 
-function CostList({ costs }) {
-  const [selectedYear, setSelectedYear] = useState("2024");
-
-  const yearChangeHandler = (year) => {
-    setSelectedYear(year);
-  };
+const CostList = ({ costs }) => {
+  if (costs.length === 0) {
+    return (
+      <h2 className="cost-list__fallback">
+        There is no any costs in this year yet
+      </h2>
+    );
+  }
 
   return (
-    <div>
-      
-      <Card className="costs">
-      <CostFilter
-        onChangeYear={yearChangeHandler}
-        selectedYear={selectedYear}
-      />
+    <ul className="cost-list">
+      {costs.map((cost) => (
         <CostItem
-          date={costs[0].date}
-          description={costs[0].description}
-          amount={costs[0].amount}
+          key={cost.id}
+          date={cost.date}
+          description={cost.description}
+          amount={cost.amount}
         />
-        <CostItem
-          date={costs[1].date}
-          description={costs[1].description}
-          amount={costs[1].amount}
-        />
-        <CostItem
-          date={costs[2].date}
-          description={costs[2].description}
-          amount={costs[2].amount}
-        />
-      </Card>
-    </div>
+      ))}
+    </ul>
   );
-}
+};
 
 export default CostList;
