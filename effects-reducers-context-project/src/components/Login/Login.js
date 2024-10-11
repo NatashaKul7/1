@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Card from "../UI/Card/Card";
 import styles from "./Login.module.css";
 import Button from "../UI/Button/Button";
-import { useEffect } from "react/cjs/react.production.min";
 
 const Login = (props) => {
   const [inputEmail, setInputEmail] = useState("");
@@ -12,9 +11,17 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  useEffect(() => {
-    setFormIsValid(inputEmail.includes("@") && inputPassword.trim().length > 7);
-  }, [inputEmail, inputPassword]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setFormIsValid(
+  //       inputEmail.includes("@") && inputPassword.trim().length > 7
+  //     );
+  //   }, 1000);
+
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [inputEmail, inputPassword]);
 
   const emailChangeHandler = (event) => {
     setInputEmail(event.target.value);
@@ -29,7 +36,7 @@ const Login = (props) => {
   };
 
   const validatePasswordHandler = () => {
-    setPasswordIsValid(inputPassword.trim().length > 6);
+    setPasswordIsValid(inputPassword.trim().length > 7);
   };
 
   const submitHandler = (event) => {
