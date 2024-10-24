@@ -7,16 +7,18 @@ const HeaderCartButton = (props) => {
   const [isButtonAnimated, setIsButtonAnimated] = useState(false);
   const cartContext = useContext(CartContext);
 
-  const cartItemsNumber = cartContext.items.reduce((currentValue, item) => {
-    return currentValue + item.amount;
-  }, 0);
+  const cartItemsNumber =
+    cartContext.items &&
+    cartContext.items.reduce((currentValue, item) => {
+      return currentValue + item.amount;
+    }, 0);
 
   const buttonClasses = `${styles.button} ${
     isButtonAnimated ? styles.bump : ""
   }`;
 
   useEffect(() => {
-    if (cartContext.items.length === 0) {
+    if (cartContext.items && cartContext.items.length === 0) {
       return;
     }
     setIsButtonAnimated(true);
