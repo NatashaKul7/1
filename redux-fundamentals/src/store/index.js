@@ -1,17 +1,44 @@
-import { legacy_createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import counterReducer from "./counterSlice";
+import userAuthReducer from "./userAuthSlice";
 
-const counterReducer = (state = { counter: 0 }, action) => {
-  if (action.type === "increment") {
-    return { counter: state.counter + 1 };
-  }
+// const counterReducer = (state = initialState, action) => {
+//   if (action.type === "increment") {
+//     return {
+//       counter: state.counter + 1,
+//       isCounterInvisible: state.isCounterInvisible,
+//     };
+//   }
 
-  if (action.type === "decrement") {
-    return { counter: state.counter - 1 };
-  }
+//   if (action.type === "increase") {
+//     return {
+//       counter: state.counter + action.number,
+//       isCounterInvisible: state.isCounterInvisible,
+//     };
+//   }
 
-  return state;
-};
+//   if (action.type === "decrement") {
+//     return {
+//       counter: state.counter - 1,
+//       isCounterInvisible: state.isCounterInvisible,
+//     };
+//   }
 
-const store = legacy_createStore(counterReducer);
+//   if (action.type === "visibility") {
+//     return {
+//       counter: state.counter,
+//       isCounterInvisible: !state.isCounterInvisible,
+//     };
+//   }
+
+//   return state;
+// };
+
+const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+    auth: userAuthReducer,
+  },
+});
 
 export default store;
