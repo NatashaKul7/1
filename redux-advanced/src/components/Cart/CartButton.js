@@ -6,7 +6,7 @@ import styles from "./CartButton.module.css";
 const CartButton = (props) => {
   // const t = useSelector(state => state.)
   const dispatchFunction = useDispatch();
-  const itemQuantity = useSelector((state) => state.cart.itemQuantity);
+  const itemsQuantity = useSelector((state) => state.cart.itemsQuantity);
 
   const cartVisibilityHandler = () => {
     dispatchFunction(mainActions.toggleCartVisibility());
@@ -15,7 +15,7 @@ const CartButton = (props) => {
   return (
     <button className={styles.button} onClick={cartVisibilityHandler}>
       <span>Корзина</span>
-      <span className={styles.badge}>{itemQuantity}</span>
+      <span className={styles.badge}>{itemsQuantity}</span>
     </button>
   );
 };
