@@ -4,51 +4,51 @@ import styles from "./ProductItem.module.css";
 import { cartActions } from "../../store/cart-slice";
 
 const ProductItem = (props) => {
-  const cart = useSelector((state) => state.cart);
+  // const cart = useSelector((state) => state.cart);
 
   const { id, title, price, description } = props;
 
-  const dispatchFunction = useDispatch();
+  const dispatchAction = useDispatch();
 
   const addItemHandler = () => {
-    const updatedItemsQuantity = cart.itemsQuantity + 1;
+    // const updatedItemsQuantity = cart.itemsQuantity + 1;
 
-    const updatedItems = cart.items.slice();
-    const existingItem = updatedItems.find((item) => item.id === id);
+    // const updatedItems = cart.items.slice();
+    // const existingItem = updatedItems.find((item) => item.id === id);
 
-    if (existingItem) {
-      const updatedExistingItem = { ...existingItem };
-      updatedExistingItem.quantity++;
-      updatedExistingItem.totalPrice = updatedExistingItem.totalPrice + price;
+    // if (existingItem) {
+    //   const updatedExistingItem = { ...existingItem };
+    //   updatedExistingItem.quantity++;
+    //   updatedExistingItem.totalPrice = updatedExistingItem.totalPrice + price;
 
-      const existingItemIndex = updatedItems.findIndex(
-        (item) => item.id === id
-      );
-      updatedItems[existingItemIndex] = updatedExistingItem;
-    } else {
-      updatedItems.push({
-        id: id,
-        totalPrice: price,
-        quantity: 1,
-        price: price,
-        title: title,
-      });
-    }
+    //   const existingItemIndex = updatedItems.findIndex(
+    //     (item) => item.id === id
+    //   );
+    //   updatedItems[existingItemIndex] = updatedExistingItem;
+    // } else {
+    //   updatedItems.push({
+    //     id: id,
+    //     totalPrice: price,
+    //     quantity: 1,
+    //     price: price,
+    //     title: title,
+    //   });
+    // }
 
-    const updatedCart = {
-      itemsQuantity: updatedItemsQuantity,
-      items: updatedItems,
-    };
+    // const updatedCart = {
+    //   itemsQuantity: updatedItemsQuantity,
+    //   items: updatedItems,
+    // };
 
-    dispatchFunction(cartActions.updateCart(updatedCart));
+    // dispatchAction(cartActions.updateCart(updatedCart));
 
-    // dispatchFunction(
-    //   cartActions.addItem({
-    //     id,
-    //     title,
-    //     price,
-    //   })
-    // );
+    dispatchAction(
+      cartActions.addItem({
+        id,
+        title,
+        price,
+      })
+    );
   };
 
   return (
