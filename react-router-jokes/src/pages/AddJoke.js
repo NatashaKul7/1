@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import JokeForm from "../components/jokes/JokeForm";
+import { useHistory } from "react-router-dom";
 
 const AddJoke = () => {
-  return (
-    <h1>AddJoke</h1>
-  )
-}
+  const history = useHistory();
 
-export default AddJoke
+  const addJokeHandler = (jokeData) => {
+    console.log(jokeData);
+
+    history.push("/jokes")
+  };
+
+  return <JokeForm onAddJoke={addJokeHandler} />;
+};
+
+export default AddJoke;

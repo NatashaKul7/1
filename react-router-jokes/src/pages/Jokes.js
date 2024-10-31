@@ -1,9 +1,21 @@
-import React from 'react'
+import React from "react";
+import JokeList from "../components/jokes/JokeList";
+
+const DUMMY_JOKES = [
+  {
+    id: "j1",
+    topic: "Programming",
+    text: "Programming",
+  },
+  {
+    id: "j2",
+    topic: "General",
+    text: "General",
+  },
+];
 
 const Jokes = () => {
-  return (
-    <h1>Jokes</h1>
-  )
-}
+  return <JokeList jokes={DUMMY_JOKES}/>;
+};
 
-export default Jokes
+export default Jokes;
