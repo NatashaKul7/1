@@ -1,5 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Form, useActionData, useNavigate } from "@remix-run/react";
+import { useEffect } from "react";
+// eslint-disable-next-line import/no-unresolved
 import { addUser, findUserByEmailPassword, User } from "users";
 import { v4 as uuidv4 } from "uuid";
 
@@ -50,6 +52,20 @@ export default function Index() {
   const actionData = useActionData<ActionData>();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem("userLogged");
+
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      location.pathname = `/profile/${user.id}`;
+    }
+
+    if (actionData?.user) {
+      localStorage.setItem("userLogged", JSON.stringify(actionData.user));
+      navigate(`/profile/${actionData.user.id}`);
+    }
+  }, [actionData, navigate]);
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600">
       <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
@@ -98,7 +114,7 @@ export default function Index() {
             />
           </div>
           <button
-            type="button"
+            type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
           >
             Login
